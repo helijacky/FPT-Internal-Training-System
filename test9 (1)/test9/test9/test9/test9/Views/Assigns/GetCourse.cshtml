@@ -1,0 +1,41 @@
+﻿@model IEnumerable<test9.Models.Assign>
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "GetCourse";
+}
+
+<h2>@User.Identity.GetUserName()'s Courses</h2>
+
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseID)
+        </th>
+        <th>
+            @Html.DisplayName("Course Name")
+        </th>
+        <th> @Html.DisplayName("Course Category")</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseCategories.CourseCatName)
+            </td>
+        </tr>
+    }
+
+
+
+

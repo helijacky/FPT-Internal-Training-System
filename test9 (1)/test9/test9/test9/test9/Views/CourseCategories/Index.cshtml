@@ -1,0 +1,42 @@
+﻿@model IEnumerable<test9.Models.CourseCategories>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (User.IsInRole("Trainer"))
+{
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Category Name")
+            </th>
+            <th>
+                @Html.DisplayName("Category Description")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCatDes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseCatID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CourseCatID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseCatID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<test9.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (User.IsInRole("Trainer"))
+{
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Course Category")
+            </th>
+            <th>
+                @Html.DisplayName("Instructor")
+            </th>
+            <th>
+                @Html.DisplayName("Email")
+            </th>
+            <th>
+                @Html.DisplayName("Course Name")
+            </th>
+            <th>
+                @Html.DisplayName("Course Description")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseCategories.CourseCatName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainer.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainer.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseDes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CourseID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
